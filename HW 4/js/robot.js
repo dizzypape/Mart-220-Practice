@@ -1,30 +1,46 @@
 class robot
+
 {
     // constructor
-    constructor(idle_animation)
+    constructor(idleAnimation, x, y, w, h)
     {
         // properties
 
-        this.idle_animation = idle_animation;
+        this.idleAnimation = idleAnimation;
         this.character = [];
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
     }
 
 
     // functions
+
+    getX()
+    {
+        return this.x;
     
+    }
+
+    setX(x)
+    {
+        this.x = x;
+    }
+
     draw(i)
     {
-        image(this.character[i], 300, 200, 283.5, 278);
+        image(this.character[i], this.x, this.y, this.w, this.h);
     }
 
     animate()
     {
         //console.log(this.imageLinks);
-        for (var j = 0; j < idle_animation.length; j++)
+        for (var j = 0; j < idleAnimation.length; j++)
         {
-            console.log(this.idle_animation[j]);
+            //console.log(this.idleAnimation[j]);
 
-            robotCharacter = loadImage(this.idle_animation[j]);
+            robotCharacter = loadImage(this.idleAnimation[j]);
 
             this.character[j] = robotCharacter;
         }

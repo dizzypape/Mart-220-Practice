@@ -5,12 +5,12 @@ var counter = 0;
 var robotCharacter;
 var character = [];
 var robotObject;
-var idle_animation = [];
+var idleAnimation = [];
 var i = 0;
 
 function preload() 
 {
-    idle_animation = loadStrings("../images/idle.txt");
+    idleAnimation = loadStrings("./images/run/run.txt");
 
 }
 
@@ -21,12 +21,11 @@ function setup()
     // counter function
     setInterval(displayCounter, 90);
 
-    robotObject = new robot(idle_animation);
-
+    robotObject = new robot(idleAnimation, 300, 200, 284, 278);
     robotObject.animate();
 
 /*
-    for (var j = 0; j < idle_animation.length; j++)
+    for (var j = 0; j < idleAnimation.length; j++)
     {
         robot = loadImage(idle_animation[j]);
         character[j] = robotCharacter;
@@ -40,7 +39,7 @@ function draw()
 {
     background(20, 20, 44);
     
-    //image(character[i], 300, 200, 283.5, 278);
+    //image(character[i], 300, 200, 284, 278);
     
     robotObject.draw(i);
 

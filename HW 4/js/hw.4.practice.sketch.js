@@ -10,7 +10,7 @@ var i = 0;
 
 function preload() 
 {
-    idleAnimation = loadStrings("./images/run/run.txt");
+    idleAnimation = loadStrings("./images/idle/idle.txt");
 
 }
 

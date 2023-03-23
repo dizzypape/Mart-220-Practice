@@ -6,5 +6,3 @@
 ./images/run/Run (6).png
 ./images/run/Run (7).png
 ./images/run/Run (8).png
-./images/run/Run (9).png
-./images/run/Run (10).png

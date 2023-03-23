@@ -56,30 +56,43 @@ loadAnimation(animationType, fileNames)
 
 drawAnimation(animationType)
 {
-    this.currentAnimation.frameDelay = 5;
-    this.currentAnimation.scale = .5
+    this.currentAnimation.frameDelay = 200;
+    this.currentAnimation.scale = .25
     this.currentAnimation.changeAnimation(animationType);
     if(animationType == 'walk' && this.direction == 'forward')
     {
         this.currentAnimation.direction = 0;
         this.currentAnimation.mirror.x = false;
-        this.currentAnimation.speed = 1;
+        this.currentAnimation.speed = 5;
     }
     else if(animationType == 'walk' && this.direction == 'reverse')
     {
         this.currentAnimation.mirror.x = true;
         this.currentAnimation.direction = 180;
-        this.currentAnimation.speed = 1;
+        this.currentAnimation.speed = 5;
+    }
+    else if(animationType == 'walk' && this.direction == 'up')
+    {
+        this.currentAnimation.mirror.x = false;
+        this.currentAnimation.direction = 270;
+        this.currentAnimation.speed = 5;
+    }
+    else if(animationType == 'walk' && this.direction == 'down')
+    {
+        this.currentAnimation.mirror.x = false;
+        this.currentAnimation.direction = 90;
+        this.currentAnimation.speed = 5;
     }
     else
     {
         this.currentAnimation.velocity.x = 0;
+        this.currentAnimation.velocity.y = 0;
     }
 }
 
 incrementIndex()
 {
-    if(this.currentFrameCount % 5 == 0)
+    if(this.currentFrameCount % 200 == 0)
     {
         this.i++;
     }
@@ -95,10 +108,9 @@ updatePosition(direction)
     this.direction = direction;
 }
 
-    checkCollision(r2)
-    {
-        return collideRectRect(this.x, this.y, this.w, this.h,
-        r2.getX(),r2.getY(),r2.getW(),r2.getH());
-    }
+isColliding(myImage) 
+{
+    return this.currentAnimation.collide(myImage);
+}
 
 }

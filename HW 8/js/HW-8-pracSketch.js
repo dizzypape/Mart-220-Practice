@@ -20,7 +20,6 @@ function setup()
 {
     createCanvas(800,600);
 
-    
     gear[0] = createSprite(random(650, width),random(50, 245),100,100, 'static');
     gear[0].img = "./images/gear.png";
     gear[0].scale = 0.10;

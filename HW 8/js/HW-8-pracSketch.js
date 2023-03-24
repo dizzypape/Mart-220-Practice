@@ -7,13 +7,13 @@ var gear = [];
 var oil;
 var healthBar = [];
 var i = 0;
-var points = 0; 
+var points = 0;
+var wrench;
 
 function preload() 
 {
     idlePaths = loadStrings("./images/idle/idle.txt");
     runPaths = loadStrings("./images/run/run.txt");
-
 }
 
 function setup()
@@ -35,12 +35,15 @@ function setup()
     gear[2].scale = 0.10;
     gear[2].diameter = 75;
 
-    oil = createSprite(random(650, width),random(50, 245), 100,100, 'kinematic');
+    oil = createSprite(random(50, 200),random(400, 550), 100,100, 'd');
     oil.img = "./images/oilbarrel.jpg";
     oil.scale = 0.10;
-    oil.diameter = 75;
+    oil.diameter = 0.5;
+    oil.rotationLock = true;
 
-    robby = new robot(0, 0, 150, 150);
+    robby = new robot(0, 0, 150, 150,'n');
+    robby.diameter = 75;
+    robby.rotationLock = true;
     robby.loadAnimation('idle', idlePaths);
     robby.loadAnimation('walk', runPaths);
 
@@ -50,6 +53,8 @@ function setup()
 function draw()
 {
     background(225);
+
+    createBoarder();
 
      //health bar
      fill(0);
@@ -117,8 +122,21 @@ function draw()
     
     if(robby.isColliding(oil))
     {
-        oil = createSprite(900,700,100,100);
-        points += 2;
+        oil.pos = {x: random(50, 750), y: random(50, 550)};
+        points += 5;
         healthBar[i] = new healthbar(75,575,152,12,20,247,31);       
     }
+}
+
+function createBoarder()
+{
+    //top
+    fill(0);
+    rect(0,0,width,10);
+    //bottom
+    rect(0,590,width,10);
+    //left
+    rect(0,0,10,height);
+    //right
+    rect(790,0,10,height);
 }
